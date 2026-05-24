@@ -1,0 +1,31 @@
+name: Bug report
+description: Report a product or engineering bug
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What happened?
+      description: Describe the bug and what you expected instead.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: List the exact route, clicks, form values, or env setup involved.
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: Browser, device, screenshots, console errors, Supabase table/policy involved.
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Local checks
+      options:
+        - label: I checked whether this reproduces locally.
+        - label: I checked whether Supabase env vars are configured.

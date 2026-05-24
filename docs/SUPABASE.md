@@ -1,0 +1,57 @@
+# Supabase Setup
+
+GearLoop uses Supabase for marketplace persistence.
+
+## What Supabase stores
+
+- `gear_listings`: Published gear listings.
+- `booking_requests`: Rental requests submitted from listing detail pages.
+- `listing-images`: Public Storage bucket for listing photos.
+
+## Setup steps
+
+1. Create or open your Supabase project.
+2. Open the SQL editor.
+3. Run [../supabase/schema.sql](../supabase/schema.sql).
+4. Copy your project URL and anon or publishable key.
+5. Add them to `.env.local` for local development.
+6. Add them to Netlify environment variables for production.
+
+## Required env vars
+
+```bash
+VITE_SUPABASE_URL=https://your-project-ref.supabase.co
+VITE_SUPABASE_ANON_KEY=your-anon-or-publishable-key
+VITE_SUPABASE_LISTING_IMAGE_BUCKET=listing-images
+```
+
+## MVP security model
+
+The current schema intentionally allows public inserts for:
+
+- Gear listings
+- Booking requests
+- Listing images
+
+That keeps the MVP end-to-end without auth. Before real launch, tighten this with:
+
+- Supabase Auth
+- Authenticated supplier accounts
+- Listing moderation
+- Rate limiting or bot protection
+- Storage paths scoped by user or listing ID
+- Private booking request reads for shop dashboards
+
+## Common issues
+
+`Supabase is not configured yet`
+
+The app cannot find `VITE_SUPABASE_URL` or `VITE_SUPABASE_ANON_KEY`. Add `.env.local` and restart Vite.
+
+`Image upload failed`
+
+Check that the `listing-images` bucket exists and that the Storage insert policy from `schema.sql` was created.
+
+`new row violates row-level security policy`
+
+Rerun `schema.sql` and confirm RLS policies exist for the table or Storage bucket involved.

@@ -87,7 +87,10 @@ export function AboutPage() {
             <h3 className="text-lg font-bold text-slate-950">Target users</h3>
             <div className="mt-4 grid gap-3 sm:grid-cols-2">
               {targetUsers.map((user) => (
-                <div key={user} className="rounded-lg bg-white px-4 py-3 text-sm font-semibold text-slate-700">
+                <div
+                  key={user}
+                  className="rounded-lg bg-white px-4 py-3 text-sm font-semibold text-slate-700"
+                >
                   {user}
                 </div>
               ))}
@@ -142,7 +145,10 @@ function ListPanel({
       <h2 className="mt-5 text-xl font-black text-slate-950">{title}</h2>
       <div className="mt-4 space-y-3">
         {items.map((item) => (
-          <div key={item} className="rounded-lg bg-stone-50 px-4 py-3 text-sm font-semibold text-slate-700">
+          <div
+            key={item}
+            className="rounded-lg bg-stone-50 px-4 py-3 text-sm font-semibold text-slate-700"
+          >
             {item}
           </div>
         ))}

@@ -108,20 +108,16 @@ async function uploadListingImage(file: File, title: string): Promise<string> {
   const extension = file.name.split(".").pop()?.toLowerCase() || "jpg";
   const path = `${Date.now()}-${createSlug(title)}.${extension}`;
 
-  const { data, error } = await client.storage
-    .from(listingImageBucket)
-    .upload(path, file, {
-      cacheControl: "3600",
-      upsert: false,
-    });
+  const { data, error } = await client.storage.from(listingImageBucket).upload(path, file, {
+    cacheControl: "3600",
+    upsert: false,
+  });
 
   if (error) {
     throw new Error(`Image upload failed: ${error.message}`);
   }
 
-  const { data: publicUrlData } = client.storage
-    .from(listingImageBucket)
-    .getPublicUrl(data.path);
+  const { data: publicUrlData } = client.storage.from(listingImageBucket).getPublicUrl(data.path);
 
   return publicUrlData.publicUrl;
 }
@@ -152,11 +148,7 @@ export async function fetchListingById(id: string): Promise<GearListing | null> 
     return mockListings.find((listing) => listing.id === id) ?? null;
   }
 
-  const { data, error } = await supabase
-    .from("gear_listings")
-    .select("*")
-    .eq("id", id)
-    .single();
+  const { data, error } = await supabase.from("gear_listings").select("*").eq("id", id).single();
 
   if (error) {
     if (error.code === "PGRST116") {
@@ -175,7 +167,7 @@ export async function createListing(
   const client = assertSupabaseConfigured();
   const imageUrl = imageFile
     ? await uploadListingImage(imageFile, input.title)
-    : fallbackImages[input.category] ?? fallbackImages.Bikes;
+    : (fallbackImages[input.category] ?? fallbackImages.Bikes);
 
   const payload = {
     title: input.title.trim(),
@@ -200,11 +192,7 @@ export async function createListing(
     listing_status: "active",
   };
 
-  const { data, error } = await client
-    .from("gear_listings")
-    .insert(payload)
-    .select("*")
-    .single();
+  const { data, error } = await client.from("gear_listings").insert(payload).select("*").single();
 
   if (error) {
     throw new Error(error.message);

@@ -130,7 +130,10 @@ export function CreateListingForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="rounded-lg border border-slate-200 bg-white p-5 shadow-card">
+    <form
+      onSubmit={handleSubmit}
+      className="rounded-lg border border-slate-200 bg-white p-5 shadow-card"
+    >
       {!isSupabaseConfigured ? (
         <div className="mb-5 rounded-lg border border-amber-300/30 bg-amber-500/10 p-4">
           <h3 className="text-sm font-bold text-amber-100">Supabase setup required</h3>
@@ -365,15 +368,7 @@ export function CreateListingForm() {
   );
 }
 
-function Field({
-  label,
-  error,
-  children,
-}: {
-  label: string;
-  error?: string;
-  children: ReactNode;
-}) {
+function Field({ label, error, children }: { label: string; error?: string; children: ReactNode }) {
   return (
     <label className="block">
       <span className="text-sm font-semibold text-slate-800">{label}</span>

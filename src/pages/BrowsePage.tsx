@@ -22,18 +22,21 @@ export function BrowsePage() {
 
   const subcategoryOptions = useMemo(
     () => getUniqueSubcategoriesForCategory(listings, filters.category),
-    [filters.category],
+    [filters.category, listings],
   );
 
   const visibleListings = useMemo(
     () => sortListings(filterListings(listings, filters), sortOption),
-    [filters, sortOption],
+    [filters, listings, sortOption],
   );
 
   const shopCount = visibleListings.filter((listing) => listing.ownerType === "shop").length;
 
   function handleFilterChange(nextFilters: ListingFilters) {
-    const nextSubcategoryOptions = getUniqueSubcategoriesForCategory(listings, nextFilters.category);
+    const nextSubcategoryOptions = getUniqueSubcategoriesForCategory(
+      listings,
+      nextFilters.category,
+    );
     setFilters({
       ...nextFilters,
       subcategory: nextSubcategoryOptions.includes(nextFilters.subcategory)

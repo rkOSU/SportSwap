@@ -36,4 +36,3 @@ export function useListings() {
     refresh: loadListings,
   };
 }
-

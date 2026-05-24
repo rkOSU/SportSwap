@@ -38,7 +38,11 @@ export function ListingDetail({ listing, owner }: ListingDetailProps) {
           <section className="overflow-hidden rounded-lg border border-slate-200 bg-white shadow-card">
             <div className="grid gap-2 md:grid-cols-[1.5fr_1fr]">
               <div className="aspect-[4/3] bg-slate-100 md:aspect-auto">
-                <img src={listing.imagePlaceholder} alt={listing.title} className="h-full w-full object-cover" />
+                <img
+                  src={listing.imagePlaceholder}
+                  alt={listing.title}
+                  className="h-full w-full object-cover"
+                />
               </div>
               <div className="grid grid-cols-2 gap-2 p-2 md:grid-cols-1">
                 {listing.features.slice(0, 4).map((feature) => (

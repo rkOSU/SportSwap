@@ -4,10 +4,6 @@ import type { GearListing } from "../types";
 import { formatCurrency } from "../utils/pricing";
 import { Badge } from "./Badge";
 
-function ownerLabel(ownerType: GearListing["ownerType"]) {
-  return ownerType === "shop" ? "Rental shop" : "Individual owner";
-}
-
 function availabilityTone(status: GearListing["availabilityStatus"]) {
   if (status === "available") {
     return "forest";
@@ -30,7 +26,7 @@ export function ListingCard({ listing }: { listing: GearListing }) {
         />
         <div className="absolute left-3 top-3 flex flex-wrap gap-2">
           <Badge tone={listing.ownerType === "shop" ? "lake" : "trail"}>
-          {listing.ownerType === "shop" ? "Operator" : "Trusted peer"}
+            {listing.ownerType === "shop" ? "Operator" : "Trusted peer"}
           </Badge>
           <Badge tone={availabilityTone(listing.availabilityStatus)}>
             {listing.availabilityStatus}
@@ -66,9 +62,7 @@ export function ListingCard({ listing }: { listing: GearListing }) {
         </div>
 
         <p className="mt-3 text-sm font-semibold text-slate-700">{listing.ownerName}</p>
-        <p className="mt-3 line-clamp-3 text-sm leading-6 text-slate-600">
-          {listing.description}
-        </p>
+        <p className="mt-3 line-clamp-3 text-sm leading-6 text-slate-600">{listing.description}</p>
 
         <Link
           to={`/listings/${listing.id}`}

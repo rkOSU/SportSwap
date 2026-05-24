@@ -114,8 +114,8 @@ export function BookingRequestForm({ listing }: { listing: GearListing }) {
         <div className="flex items-start gap-3">
           <CheckCircle2 className="mt-0.5 h-6 w-6 shrink-0 text-forest-700" aria-hidden="true" />
           <div>
-              <h3 className="text-lg font-bold text-forest-900">Rental request sent.</h3>
-              <p className="mt-2 text-sm leading-6 text-forest-900/80">
+            <h3 className="text-lg font-bold text-forest-900">Rental request sent.</h3>
+            <p className="mt-2 text-sm leading-6 text-forest-900/80">
               The shop or owner would review and confirm availability.
               {isSupabaseConfigured
                 ? " This request has been saved in Supabase."
@@ -197,7 +197,9 @@ export function BookingRequestForm({ listing }: { listing: GearListing }) {
         </div>
 
         <label className="mt-4 block">
-          <span className="text-sm font-semibold text-slate-800">Optional note to shop or owner</span>
+          <span className="text-sm font-semibold text-slate-800">
+            Optional note to shop or owner
+          </span>
           <textarea
             value={form.note}
             onChange={(event) => updateField("note", event.target.value)}

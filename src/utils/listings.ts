@@ -1,20 +1,15 @@
 import type { GearListing, ListingFilters, SortOption } from "../types";
 
-export function filterListings(
-  listings: GearListing[],
-  filters: ListingFilters,
-): GearListing[] {
+export function filterListings(listings: GearListing[], filters: ListingFilters): GearListing[] {
   return listings.filter((listing) => {
     const matchesCategory = !filters.category || listing.category === filters.category;
-    const matchesSubcategory =
-      !filters.subcategory || listing.subcategory === filters.subcategory;
+    const matchesSubcategory = !filters.subcategory || listing.subcategory === filters.subcategory;
     const matchesLocation =
       !filters.location ||
       listing.location.toLowerCase().includes(filters.location.toLowerCase().trim());
     const matchesPrice =
       filters.maxPricePerDay === "" || listing.pricePerDay <= filters.maxPricePerDay;
-    const matchesOwnerType =
-      filters.ownerType === "all" || listing.ownerType === filters.ownerType;
+    const matchesOwnerType = filters.ownerType === "all" || listing.ownerType === filters.ownerType;
     const matchesAvailability =
       filters.availabilityStatus === "all" ||
       listing.availabilityStatus === filters.availabilityStatus;

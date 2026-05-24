@@ -133,8 +133,7 @@ export const listings: GearListing[] = [
     imagePlaceholder:
       "https://images.unsplash.com/photo-1485965120184-e220f721d03e?auto=format&fit=crop&w=1200&q=80",
     features: ["Carbon frame", "Shimano 105", "Flat kit included", "Shop tuned"],
-    safetyNotes:
-      "Helmet strongly recommended. Shop will confirm sizing and fit before pickup.",
+    safetyNotes: "Helmet strongly recommended. Shop will confirm sizing and fit before pickup.",
     pickupInstructions:
       "Pick up at the Pearl Street shop desk. Bring a photo ID and the card used for the deposit hold.",
   },
@@ -211,8 +210,7 @@ export const listings: GearListing[] = [
     imagePlaceholder:
       "https://images.unsplash.com/photo-1571068316344-75bc76f77890?auto=format&fit=crop&w=1200&q=80",
     features: ["Pedal assist", "Integrated lights", "Rear rack", "Lock included"],
-    safetyNotes:
-      "Class 1 pedal assist. Riders receive a controls walkthrough before pickup.",
+    safetyNotes: "Class 1 pedal assist. Riders receive a controls walkthrough before pickup.",
     pickupInstructions:
       "Pick up from the downtown Bend storefront. Battery charger included for multi-day rentals.",
   },
@@ -237,8 +235,7 @@ export const listings: GearListing[] = [
     imagePlaceholder:
       "https://images.unsplash.com/photo-1551524559-8af4e6624178?auto=format&fit=crop&w=1200&q=80",
     features: ["Board", "Bindings", "Boots", "Stance adjustment"],
-    safetyNotes:
-      "Binding setup is checked by shop staff. Helmets can be added at pickup.",
+    safetyNotes: "Binding setup is checked by shop staff. Helmets can be added at pickup.",
     pickupInstructions:
       "Pickup is two blocks from the town lift. Arrive 20 minutes early for boot fitting.",
   },
@@ -289,10 +286,8 @@ export const listings: GearListing[] = [
     imagePlaceholder:
       "https://images.unsplash.com/photo-1547447134-cd3f5c716030?auto=format&fit=crop&w=1200&q=80",
     features: ["Carving deck", "Soft wheels", "Helmet available", "Beginner friendly"],
-    safetyNotes:
-      "Avoid steep descents and wet pavement. Helmet available on request.",
-    pickupInstructions:
-      "Pickup near Westside Santa Cruz after owner confirms the request window.",
+    safetyNotes: "Avoid steep descents and wet pavement. Helmet available on request.",
+    pickupInstructions: "Pickup near Westside Santa Cruz after owner confirms the request window.",
   },
   {
     id: "paddleboard-austin",
@@ -393,8 +388,7 @@ export const listings: GearListing[] = [
     imagePlaceholder:
       "https://images.unsplash.com/photo-1529422643029-d4585747aaf2?auto=format&fit=crop&w=1200&q=80",
     features: ["2-inch hitch", "Carries two bikes", "Lock cores", "Owner walkthrough"],
-    safetyNotes:
-      "Renter is responsible for confirming hitch compatibility before pickup.",
+    safetyNotes: "Renter is responsible for confirming hitch compatibility before pickup.",
     pickupInstructions:
       "Pickup near North Boulder. Owner can help mount and check fit during handoff.",
   },
@@ -419,8 +413,7 @@ export const listings: GearListing[] = [
     imagePlaceholder:
       "https://images.unsplash.com/photo-1593764592116-bfb2a97c642a?auto=format&fit=crop&w=1200&q=80",
     features: ["Helmet", "Lock", "Flat kit", "Lights and pump"],
-    safetyNotes:
-      "Helmet fit is checked at pickup. Replace after any crash or hard impact.",
+    safetyNotes: "Helmet fit is checked at pickup. Replace after any crash or hard impact.",
     pickupInstructions:
       "Bundle is prepared at the shop counter and can be paired with most bike rentals.",
   },

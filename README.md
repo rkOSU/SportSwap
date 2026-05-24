@@ -33,6 +33,27 @@ npm run dev
 
 Vite will print a local URL, usually `http://localhost:5173`.
 
+## Team docs
+
+- [Development guide](docs/DEVELOPMENT.md)
+- [Architecture notes](docs/ARCHITECTURE.md)
+- [Supabase setup](docs/SUPABASE.md)
+- [Contributing workflow](CONTRIBUTING.md)
+
+## Useful scripts
+
+```bash
+npm run dev
+npm run lint
+npm run typecheck
+npm run format:check
+npm run build
+npm run check
+npm run preview
+```
+
+Use `npm run check` before pushing or opening a PR.
+
 ## Supabase setup
 
 GearLoop uses Supabase for real listings and image uploads when these env vars are present:

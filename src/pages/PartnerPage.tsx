@@ -33,7 +33,9 @@ export function PartnerPage() {
           <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-forest-50 text-forest-700">
             <Store className="h-6 w-6" aria-hidden="true" />
           </div>
-          <h2 className="mt-5 text-2xl font-black text-slate-950">For rental shops and outfitters</h2>
+          <h2 className="mt-5 text-2xl font-black text-slate-950">
+            For rental shops and outfitters
+          </h2>
           <p className="mt-3 text-sm leading-6 text-slate-600">
             GearLoop gives serious operators a demand layer that can sit beside existing booking
             calendars, POS systems, phone workflows, or manual confirmation processes.
@@ -41,7 +43,10 @@ export function PartnerPage() {
           <div className="mt-5 space-y-3">
             {shopBenefits.map((benefit) => (
               <div key={benefit} className="flex gap-3 text-sm leading-6 text-slate-700">
-                <CheckCircle2 className="mt-1 h-4 w-4 shrink-0 text-forest-600" aria-hidden="true" />
+                <CheckCircle2
+                  className="mt-1 h-4 w-4 shrink-0 text-forest-600"
+                  aria-hidden="true"
+                />
                 <span>{benefit}</span>
               </div>
             ))}

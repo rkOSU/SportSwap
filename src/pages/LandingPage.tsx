@@ -1,4 +1,12 @@
-import { ArrowRight, Building2, CheckCircle2, ClipboardList, MapPinned, Search, Store } from "lucide-react";
+import {
+  ArrowRight,
+  Building2,
+  CheckCircle2,
+  ClipboardList,
+  MapPinned,
+  Search,
+  Store,
+} from "lucide-react";
 import { Link } from "react-router-dom";
 import { CategoryCard } from "../components/CategoryCard";
 import { Hero } from "../components/Hero";
@@ -67,7 +75,10 @@ export function LandingPage() {
           />
           <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
             {howItWorks.map((item, index) => (
-              <div key={item.title} className="rounded-lg border border-slate-200 bg-basalt-900/70 p-5">
+              <div
+                key={item.title}
+                className="rounded-lg border border-slate-200 bg-basalt-900/70 p-5"
+              >
                 <div className="flex items-center justify-between gap-4">
                   <span className="flex h-11 w-11 items-center justify-center rounded-lg bg-forest-300 text-zinc-950">
                     <item.icon className="h-5 w-5" aria-hidden="true" />
@@ -98,7 +109,10 @@ export function LandingPage() {
                 "Start with shop-grade operations, then expand peer supply only where verification and protection make sense.",
               ].map((point) => (
                 <div key={point} className="flex gap-3">
-                  <CheckCircle2 className="mt-1 h-4 w-4 shrink-0 text-forest-300" aria-hidden="true" />
+                  <CheckCircle2
+                    className="mt-1 h-4 w-4 shrink-0 text-forest-300"
+                    aria-hidden="true"
+                  />
                   <p>{point}</p>
                 </div>
               ))}
