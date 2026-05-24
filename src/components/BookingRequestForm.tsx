@@ -1,5 +1,7 @@
 import { CheckCircle2, Send } from "lucide-react";
 import { FormEvent, useMemo, useState } from "react";
+import { isSupabaseConfigured } from "../lib/supabase";
+import { submitBookingRequest } from "../services/bookingService";
 import type { BookingRequest, GearListing } from "../types";
 import {
   calculateEstimatedTotal,
@@ -33,6 +35,8 @@ export function BookingRequestForm({ listing }: { listing: GearListing }) {
   const [form, setForm] = useState<FormState>(initialState);
   const [errors, setErrors] = useState<FormErrors>({});
   const [submittedRequest, setSubmittedRequest] = useState<BookingRequest | null>(null);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const rentalDays = useMemo(
     () => calculateRentalDays(form.startDate, form.endDate),
@@ -44,6 +48,7 @@ export function BookingRequestForm({ listing }: { listing: GearListing }) {
   function updateField<K extends keyof FormState>(key: K, value: FormState[K]) {
     setForm((current) => ({ ...current, [key]: value }));
     setErrors((current) => ({ ...current, [key]: undefined, dateRange: undefined }));
+    setSubmitError(null);
   }
 
   function validateForm(): FormErrors {
@@ -67,8 +72,9 @@ export function BookingRequestForm({ listing }: { listing: GearListing }) {
     return nextErrors;
   }
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    setSubmitError(null);
     const nextErrors = validateForm();
     setErrors(nextErrors);
 
@@ -76,7 +82,7 @@ export function BookingRequestForm({ listing }: { listing: GearListing }) {
       return;
     }
 
-    setSubmittedRequest({
+    const request: BookingRequest = {
       listingId: listing.id,
       startDate: form.startDate,
       endDate: form.endDate,
@@ -87,7 +93,19 @@ export function BookingRequestForm({ listing }: { listing: GearListing }) {
       depositAmount: listing.depositAmount,
       estimatedTotal,
       status: "pending",
-    });
+    };
+
+    setIsSubmitting(true);
+    try {
+      await submitBookingRequest(request);
+      setSubmittedRequest(request);
+    } catch (nextError) {
+      setSubmitError(
+        nextError instanceof Error ? nextError.message : "Unable to send rental request.",
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   if (submittedRequest) {
@@ -96,10 +114,12 @@ export function BookingRequestForm({ listing }: { listing: GearListing }) {
         <div className="flex items-start gap-3">
           <CheckCircle2 className="mt-0.5 h-6 w-6 shrink-0 text-forest-700" aria-hidden="true" />
           <div>
-            <h3 className="text-lg font-bold text-forest-900">Rental request sent.</h3>
-            <p className="mt-2 text-sm leading-6 text-forest-900/80">
-              The shop or owner would review and confirm availability. This MVP keeps the request
-              client-side so the flow can be demonstrated without a backend.
+              <h3 className="text-lg font-bold text-forest-900">Rental request sent.</h3>
+              <p className="mt-2 text-sm leading-6 text-forest-900/80">
+              The shop or owner would review and confirm availability.
+              {isSupabaseConfigured
+                ? " This request has been saved in Supabase."
+                : " Add Supabase env vars to persist requests beyond this browser session."}
             </p>
             <div className="mt-4 rounded-lg bg-white p-4 text-sm text-slate-700">
               <p>
@@ -121,6 +141,11 @@ export function BookingRequestForm({ listing }: { listing: GearListing }) {
     <form onSubmit={handleSubmit} className="space-y-5">
       <div className="rounded-lg border border-slate-200 bg-white p-5 shadow-card">
         <h3 className="text-lg font-bold text-slate-950">Request Rental</h3>
+        {submitError ? (
+          <div className="mt-4 rounded-lg border border-red-300/30 bg-red-500/10 p-3 text-sm font-semibold text-red-100">
+            {submitError}
+          </div>
+        ) : null}
         <div className="mt-5 grid gap-4 sm:grid-cols-2">
           <label className="block">
             <span className="text-sm font-semibold text-slate-800">Start date</span>
@@ -182,9 +207,9 @@ export function BookingRequestForm({ listing }: { listing: GearListing }) {
           />
         </label>
 
-        <Button type="submit" fullWidth className="mt-5">
+        <Button type="submit" fullWidth className="mt-5" disabled={isSubmitting}>
           <Send className="h-4 w-4" aria-hidden="true" />
-          Request Rental
+          {isSubmitting ? "Sending request..." : "Request Rental"}
         </Button>
       </div>
 

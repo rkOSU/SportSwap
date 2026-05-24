@@ -5,7 +5,7 @@ import { Hero } from "../components/Hero";
 import { ListingCard } from "../components/ListingCard";
 import { SectionHeader } from "../components/SectionHeader";
 import { categories } from "../data/categories";
-import { listings } from "../data/listings";
+import { useListings } from "../hooks/useListings";
 
 const howItWorks = [
   {
@@ -31,6 +31,7 @@ const howItWorks = [
 ];
 
 export function LandingPage() {
+  const { listings } = useListings();
   const featuredListings = listings.filter((listing) => listing.ownerType === "shop").slice(0, 3);
 
   return (

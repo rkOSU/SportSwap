@@ -1,7 +1,11 @@
 import { CheckCircle2, PlusCircle } from "lucide-react";
-import { FormEvent, useState } from "react";
+import { FormEvent, useMemo, useState } from "react";
 import type { ReactNode } from "react";
+import { Link } from "react-router-dom";
 import { categoryOptions, subcategoryOptions } from "../data/categories";
+import { isSupabaseConfigured } from "../lib/supabase";
+import { createListing } from "../services/listingService";
+import type { GearListing } from "../types";
 import type { AvailabilityStatus, CreateListingInput, GearCondition, OwnerType } from "../types";
 import { Button } from "./Button";
 
@@ -43,12 +47,42 @@ const requiredFields: Array<keyof CreateListingInput> = [
 export function CreateListingForm() {
   const [form, setForm] = useState<CreateListingInput>(initialForm);
   const [errors, setErrors] = useState<FormErrors>({});
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [imageFile, setImageFile] = useState<File | null>(null);
+  const [createdListing, setCreatedListing] = useState<GearListing | null>(null);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const imagePreviewUrl = useMemo(
+    () => (imageFile ? URL.createObjectURL(imageFile) : null),
+    [imageFile],
+  );
 
   function updateField<K extends keyof CreateListingInput>(key: K, value: CreateListingInput[K]) {
     setForm((current) => ({ ...current, [key]: value }));
     setErrors((current) => ({ ...current, [key]: undefined }));
-    setIsSubmitted(false);
+    setCreatedListing(null);
+    setSubmitError(null);
+  }
+
+  function handleImageChange(file: File | null) {
+    setSubmitError(null);
+    setCreatedListing(null);
+
+    if (!file) {
+      setImageFile(null);
+      return;
+    }
+
+    if (!file.type.startsWith("image/")) {
+      setSubmitError("Upload a JPG, PNG, or WebP image file.");
+      return;
+    }
+
+    if (file.size > 5 * 1024 * 1024) {
+      setSubmitError("Image must be 5MB or smaller for this MVP upload flow.");
+      return;
+    }
+
+    setImageFile(file);
   }
 
   function validateForm(): FormErrors {
@@ -70,8 +104,9 @@ export function CreateListingForm() {
     return nextErrors;
   }
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    setSubmitError(null);
     const nextErrors = validateForm();
     setErrors(nextErrors);
 
@@ -79,35 +114,56 @@ export function CreateListingForm() {
       return;
     }
 
-    const listingPayload = {
-      ...form,
-      pricePerDay: Number(form.pricePerDay),
-      depositAmount: Number(form.depositAmount),
-      replacementValue: Number(form.replacementValue),
-      features: form.features
-        .split(",")
-        .map((feature) => feature.trim())
-        .filter(Boolean),
-    };
-
-    console.info("GearLoop listing intake payload", listingPayload);
-    setIsSubmitted(true);
+    setIsSubmitting(true);
+    try {
+      const result = await createListing(form, imageFile);
+      setCreatedListing(result.listing);
+      setForm(initialForm);
+      setImageFile(null);
+    } catch (nextError) {
+      setSubmitError(
+        nextError instanceof Error ? nextError.message : "Unable to publish this listing.",
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   return (
     <form onSubmit={handleSubmit} className="rounded-lg border border-slate-200 bg-white p-5 shadow-card">
-      {isSubmitted ? (
+      {!isSupabaseConfigured ? (
+        <div className="mb-5 rounded-lg border border-amber-300/30 bg-amber-500/10 p-4">
+          <h3 className="text-sm font-bold text-amber-100">Supabase setup required</h3>
+          <p className="mt-1 text-sm leading-6 text-amber-100/85">
+            Add `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY`, run the SQL schema, then restart
+            the dev server to publish real listings and upload gear images.
+          </p>
+        </div>
+      ) : null}
+
+      {createdListing ? (
         <div className="mb-5 rounded-lg border border-forest-200 bg-forest-50 p-4">
           <div className="flex gap-3">
             <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-forest-700" aria-hidden="true" />
             <div>
-              <h3 className="text-sm font-bold text-forest-900">Listing intake received.</h3>
+              <h3 className="text-sm font-bold text-forest-900">Listing published.</h3>
               <p className="mt-1 text-sm leading-6 text-forest-900/80">
-                In production this payload would be sent to the GearLoop API for review and
-                inventory onboarding.
+                Your gear is now saved in Supabase and visible in the marketplace.
               </p>
+              <Link
+                to={`/listings/${createdListing.id}`}
+                className="mt-3 inline-flex text-sm font-bold text-forest-100 hover:text-white"
+              >
+                View published listing
+              </Link>
             </div>
           </div>
+        </div>
+      ) : null}
+
+      {submitError ? (
+        <div className="mb-5 rounded-lg border border-red-300/30 bg-red-500/10 p-4 text-sm font-semibold text-red-100">
+          {submitError}
         </div>
       ) : null}
 
@@ -247,6 +303,28 @@ export function CreateListingForm() {
         </Field>
       </div>
 
+      <div className="mt-4">
+        <Field label="Gear photo">
+          <input
+            type="file"
+            accept="image/png,image/jpeg,image/webp"
+            onChange={(event) => handleImageChange(event.target.files?.[0] ?? null)}
+            className="focus-ring mt-2 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm"
+          />
+          <p className="mt-2 text-xs leading-5 text-slate-500">
+            Optional, but recommended. JPG, PNG, or WebP up to 5MB. If omitted, GearLoop uses a
+            category image.
+          </p>
+          {imagePreviewUrl ? (
+            <img
+              src={imagePreviewUrl}
+              alt="Selected gear preview"
+              className="mt-3 h-44 w-full rounded-lg border border-slate-200 object-cover"
+            />
+          ) : null}
+        </Field>
+      </div>
+
       <div className="mt-4 grid gap-4">
         <Field label="Description" error={errors.description}>
           <textarea
@@ -279,9 +357,9 @@ export function CreateListingForm() {
         </Field>
       </div>
 
-      <Button type="submit" className="mt-5">
+      <Button type="submit" className="mt-5" disabled={isSubmitting || !isSupabaseConfigured}>
         <PlusCircle className="h-4 w-4" aria-hidden="true" />
-        Submit listing intake
+        {isSubmitting ? "Publishing listing..." : "Publish listing"}
       </Button>
     </form>
   );

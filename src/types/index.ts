@@ -25,6 +25,8 @@ export type GearListing = {
   features: string[];
   safetyNotes: string;
   pickupInstructions: string;
+  createdAt?: string;
+  listingStatus?: "active" | "pending" | "archived";
 };
 
 export type BookingRequest = {
@@ -78,3 +80,5 @@ export type CreateListingInput = {
   safetyNotes: string;
   features: string;
 };
+
+export type ListingDataSource = "supabase" | "mock";

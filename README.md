@@ -18,6 +18,8 @@ GearLoop is a rugged, supplier-first rental marketplace for adventure and outdoo
 - Vite
 - Tailwind CSS
 - React Router
+- Supabase Postgres
+- Supabase Storage
 - Mock local data
 - Netlify deployment config
 
@@ -25,10 +27,33 @@ GearLoop is a rugged, supplier-first rental marketplace for adventure and outdoo
 
 ```bash
 npm install
+cp .env.example .env.local
 npm run dev
 ```
 
 Vite will print a local URL, usually `http://localhost:5173`.
+
+## Supabase setup
+
+GearLoop uses Supabase for real listings and image uploads when these env vars are present:
+
+```bash
+VITE_SUPABASE_URL=...
+VITE_SUPABASE_ANON_KEY=...
+VITE_SUPABASE_LISTING_IMAGE_BUCKET=listing-images
+```
+
+Run [supabase/schema.sql](supabase/schema.sql) in the Supabase SQL editor. It creates:
+
+- `public.gear_listings`
+- `public.booking_requests`
+- Public read access for active listings
+- Public MVP insert access for new listings
+- Public MVP insert access for rental requests
+- A public `listing-images` Storage bucket
+- Storage policies for listing image reads and uploads
+
+After adding env vars, restart the dev server. Without env vars, the app falls back to local seed listings so the marketing/browse experience still works.
 
 ## Build
 
@@ -73,6 +98,14 @@ netlify deploy --build
 netlify deploy --prod --build
 ```
 
+Netlify environment variables needed for database-backed production:
+
+```bash
+VITE_SUPABASE_URL
+VITE_SUPABASE_ANON_KEY
+VITE_SUPABASE_LISTING_IMAGE_BUCKET
+```
+
 When running `netlify init`, use:
 
 - Create and configure a new site
@@ -82,10 +115,11 @@ When running `netlify init`, use:
 
 ## Current limitations
 
-- No backend, database, authentication, payments, or real persistence.
-- Booking requests and listing intake submissions are client-side success states only.
-- Inventory, availability, owner profiles, ratings, and distances are mock local data.
-- Images are remote placeholder assets suitable for MVP demonstration.
+- Authentication and payments are not implemented yet.
+- Booking requests persist to Supabase when env vars and schema are configured.
+- Listings persist to Supabase only after env vars and schema are configured.
+- Owner profiles, ratings, and distances are partly placeholder data for new listings.
+- Listing images upload to Supabase Storage when configured; otherwise category images are used.
 - Deposits, platform fees, cancellation language, and totals are product placeholders.
 
 ## Future roadmap
