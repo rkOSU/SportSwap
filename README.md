@@ -64,7 +64,7 @@ VITE_SUPABASE_ANON_KEY=...
 VITE_SUPABASE_LISTING_IMAGE_BUCKET=listing-images
 ```
 
-Run [supabase/schema.sql](supabase/schema.sql) in the Supabase SQL editor. It creates:
+Run [supabase/schema.sql](supabase/schema.sql) in the Supabase SQL editor, or use the Supabase CLI migration in [supabase/migrations](supabase/migrations). It creates:
 
 - `public.gear_listings`
 - `public.booking_requests`
@@ -75,6 +75,17 @@ Run [supabase/schema.sql](supabase/schema.sql) in the Supabase SQL editor. It cr
 - Storage policies for listing image reads and uploads
 
 After adding env vars, restart the dev server. Without env vars, the app falls back to local seed listings so the marketing/browse experience still works.
+
+CLI option:
+
+```bash
+npm run supabase:login
+npm run supabase:projects
+npm run supabase:link
+npm run supabase:push
+```
+
+`supabase:link` will ask you to choose or enter a Supabase project ref. If you do not have a project yet, create one in Supabase first or use the Supabase CLI project creation flow after login.
 
 ## Build
 

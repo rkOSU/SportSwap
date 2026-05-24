@@ -17,6 +17,26 @@ GearLoop uses Supabase for marketplace persistence.
 5. Add them to `.env.local` for local development.
 6. Add them to Netlify environment variables for production.
 
+## CLI setup option
+
+The repo includes a Supabase CLI migration at `supabase/migrations/20260524174700_initial_marketplace_schema.sql`.
+
+Login and link:
+
+```bash
+npm run supabase:login
+npm run supabase:projects
+npm run supabase:link
+```
+
+Then apply the migration:
+
+```bash
+npm run supabase:push
+```
+
+If you do not see a project in `supabase:projects`, create a Supabase project in the dashboard first, then rerun `npm run supabase:projects`.
+
 ## Required env vars
 
 ```bash

@@ -27,6 +27,10 @@ npm run format:check
 npm run build
 npm run check
 npm run preview
+npm run supabase:login
+npm run supabase:projects
+npm run supabase:link
+npm run supabase:push
 ```
 
 Use `npm run check` before pushing. It runs linting and the production build.
