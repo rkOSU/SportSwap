@@ -13,7 +13,9 @@
 body {
   margin: 0;
   min-width: 320px;
-  background: #fafaf9;
+  background:
+    linear-gradient(135deg, rgba(132, 168, 58, 0.08) 0 1px, transparent 1px 24px),
+    linear-gradient(180deg, #080a07 0%, #10140f 48%, #080a07 100%);
 }
 
 button,
@@ -34,4 +36,81 @@ img {
 
 .focus-ring {
   @apply focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest-600;
+}
+
+/* Rugged dark-marketplace skin. These override the first MVP's light utility defaults. */
+.bg-stone-50 {
+  background-color: #080a07 !important;
+}
+
+.bg-white {
+  background-color: #10140f !important;
+}
+
+.bg-slate-100 {
+  background-color: #1a2118 !important;
+}
+
+.bg-forest-50 {
+  background-color: rgba(174, 202, 116, 0.1) !important;
+}
+
+.bg-lake-50 {
+  background-color: rgba(66, 127, 133, 0.16) !important;
+}
+
+.bg-trail-50 {
+  background-color: rgba(184, 117, 52, 0.14) !important;
+}
+
+.border-slate-200 {
+  border-color: #273020 !important;
+}
+
+.border-slate-300 {
+  border-color: #3c4934 !important;
+}
+
+.text-slate-950,
+.text-slate-900,
+.text-slate-800 {
+  color: #f5f0e8 !important;
+}
+
+.text-slate-700 {
+  color: #d9d0bf !important;
+}
+
+.text-slate-600 {
+  color: #b8ae9b !important;
+}
+
+.text-slate-500,
+.text-slate-400 {
+  color: #968c7a !important;
+}
+
+.text-forest-700,
+.text-forest-600 {
+  color: #d8e9ac !important;
+}
+
+.text-lake-700 {
+  color: #bde3e5 !important;
+}
+
+.text-trail-700 {
+  color: #f3c28d !important;
+}
+
+input,
+select,
+textarea {
+  background-color: #0b0f0a;
+  color: #f5f0e8;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #837c6d;
 }

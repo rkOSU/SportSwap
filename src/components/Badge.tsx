@@ -3,12 +3,12 @@ import type { ReactNode } from "react";
 type BadgeTone = "forest" | "lake" | "trail" | "amber" | "red" | "slate";
 
 const toneClasses: Record<BadgeTone, string> = {
-  forest: "bg-forest-100 text-forest-700 ring-forest-600/10",
-  lake: "bg-lake-100 text-lake-700 ring-lake-600/10",
-  trail: "bg-trail-100 text-trail-700 ring-trail-500/10",
-  amber: "bg-amber-100 text-amber-800 ring-amber-600/10",
-  red: "bg-red-100 text-red-700 ring-red-600/10",
-  slate: "bg-slate-100 text-slate-700 ring-slate-600/10",
+  forest: "bg-forest-300/15 text-forest-100 ring-forest-300/30",
+  lake: "bg-lake-500/20 text-lake-100 ring-lake-100/20",
+  trail: "bg-trail-500/20 text-trail-50 ring-trail-100/20",
+  amber: "bg-amber-500/15 text-amber-100 ring-amber-300/30",
+  red: "bg-red-500/15 text-red-100 ring-red-300/30",
+  slate: "bg-stone-500/15 text-stone-200 ring-stone-200/15",
 };
 
 type BadgeProps = {

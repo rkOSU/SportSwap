@@ -11,7 +11,7 @@ const links = [
 
 function navLinkClass({ isActive }: { isActive: boolean }) {
   return `rounded-lg px-3 py-2 text-sm font-semibold transition ${
-    isActive ? "bg-forest-50 text-forest-700" : "text-slate-700 hover:bg-slate-100"
+    isActive ? "bg-forest-300/15 text-forest-100" : "text-stone-300 hover:bg-white/10"
   }`;
 }
 
@@ -19,10 +19,10 @@ export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-40 border-b border-slate-200 bg-white/95 backdrop-blur">
+    <header className="sticky top-0 z-40 border-b border-slate-200 bg-basalt-900/92 backdrop-blur">
       <nav className="page-shell flex min-h-16 items-center justify-between gap-4">
-        <Link to="/" className="flex items-center gap-2 text-slate-950" aria-label="GearLoop home">
-          <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-forest-600 text-white">
+        <Link to="/" className="flex items-center gap-2 text-stone-50" aria-label="GearLoop home">
+          <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-forest-300 text-zinc-950">
             <Mountain className="h-5 w-5" aria-hidden="true" />
           </span>
           <span className="text-lg font-black">GearLoop</span>
@@ -39,15 +39,15 @@ export function Navbar() {
         <div className="hidden items-center gap-3 md:flex">
           <Link
             to="/browse"
-            className="inline-flex min-h-10 items-center rounded-lg px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-100"
+            className="inline-flex min-h-10 items-center rounded-lg px-4 py-2 text-sm font-semibold text-stone-300 hover:bg-white/10"
           >
-            Browse inventory
+            Scout gear
           </Link>
           <Link
             to="/partner"
-            className="inline-flex min-h-10 items-center rounded-lg bg-forest-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-forest-700"
+            className="inline-flex min-h-10 items-center rounded-lg bg-forest-300 px-4 py-2 text-sm font-semibold text-zinc-950 shadow-sm transition hover:bg-forest-200"
           >
-            List inventory
+            List gear
           </Link>
         </div>
 
@@ -64,7 +64,7 @@ export function Navbar() {
       </nav>
 
       {isOpen ? (
-        <div className="border-t border-slate-200 bg-white md:hidden">
+        <div className="border-t border-slate-200 bg-basalt-900 md:hidden">
           <div className="page-shell flex flex-col gap-2 py-4">
             {links.map((link) => (
               <NavLink

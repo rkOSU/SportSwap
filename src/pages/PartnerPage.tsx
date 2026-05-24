@@ -3,16 +3,16 @@ import { CreateListingForm } from "../components/CreateListingForm";
 import { SectionHeader } from "../components/SectionHeader";
 
 const shopBenefits = [
-  "Reach renters already searching for gear near your market.",
-  "Centralize visibility across categories without rebuilding your booking system.",
-  "Reduce phone calls and manual quote requests with structured rental intake.",
-  "Test demand before investing in new software, integrations, or paid acquisition.",
+  "Turn underused inventory into a searchable local rental channel.",
+  "Capture serious renter intent before staff spend time on calls and quotes.",
+  "Show fit, condition, deposits, pickup rules, and safety notes before handoff.",
+  "Test demand across categories before buying new software or expanding fleet.",
 ];
 
 const ownerNotes = [
-  "Peer-to-peer listings are supported in limited MVP form.",
-  "Trust, identity, protection, and claims workflows expand before broader P2P scaling.",
-  "Individual listings help validate category demand and future supply density.",
+  "Peer listings are positioned as trusted supply, not random classifieds.",
+  "High-value gear needs deposits, identity, condition logs, and claims workflows.",
+  "Individual owners can validate category demand before broad P2P expansion.",
 ];
 
 export function PartnerPage() {
@@ -22,8 +22,8 @@ export function PartnerPage() {
         <div className="page-shell">
           <SectionHeader
             eyebrow="Supply partners"
-            title="List your rental inventory on GearLoop"
-            description="GearLoop starts with shop aggregation because local rental businesses already have gear, maintenance routines, customer intent, and pickup operations."
+            title="Put your adventure inventory to work"
+            description="GearLoop is recruiting the rugged supply side first: shops, outfitters, campus clubs, gear libraries, guides with spare kit, and trusted owners who want their equipment earning instead of collecting dust."
           />
         </div>
       </section>
@@ -33,9 +33,9 @@ export function PartnerPage() {
           <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-forest-50 text-forest-700">
             <Store className="h-6 w-6" aria-hidden="true" />
           </div>
-          <h2 className="mt-5 text-2xl font-black text-slate-950">For rental shops</h2>
+          <h2 className="mt-5 text-2xl font-black text-slate-950">For rental shops and outfitters</h2>
           <p className="mt-3 text-sm leading-6 text-slate-600">
-            GearLoop gives shops a lightweight discovery layer that can sit beside existing booking
+            GearLoop gives serious operators a demand layer that can sit beside existing booking
             calendars, POS systems, phone workflows, or manual confirmation processes.
           </p>
           <div className="mt-5 space-y-3">
@@ -52,10 +52,10 @@ export function PartnerPage() {
           <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-trail-50 text-trail-700">
             <UserRound className="h-6 w-6" aria-hidden="true" />
           </div>
-          <h2 className="mt-5 text-2xl font-black text-slate-950">For individual owners</h2>
+          <h2 className="mt-5 text-2xl font-black text-slate-950">For trusted gear owners</h2>
           <p className="mt-3 text-sm leading-6 text-slate-600">
-            Peer-to-peer rentals remain part of the long-term marketplace vision, but the MVP keeps
-            the experience intentionally constrained while demand and trust workflows are tested.
+            Peer-to-peer rentals are still part of the long-term marketplace, but GearLoop should
+            feel more like a field-ready supply network than a casual classifieds board.
           </p>
           <div className="mt-5 space-y-3">
             {ownerNotes.map((note) => (
@@ -72,8 +72,8 @@ export function PartnerPage() {
         <div className="mb-6">
           <SectionHeader
             eyebrow="Inventory intake"
-            title="Create a listing request"
-            description="The MVP validates fields and prepares a structured payload that can later be sent to an API, moderation queue, or shop dashboard."
+            title="Start with one battle-tested listing"
+            description="The MVP validates the fields that matter for rugged rentals: condition, replacement value, deposit, pickup rules, safety notes, and the features renters compare before committing."
           />
         </div>
         <CreateListingForm />

@@ -1,14 +1,14 @@
 # GearLoop MVP
 
-GearLoop is a centralized rental marketplace for adventure and outdoor gear. The MVP focuses on rental shop aggregation first: renters can search, compare, and request bikes, boards, snow gear, water gear, camping equipment, and accessories from local rental shops in one place, while individual owner listings remain visible as a future peer-to-peer expansion path.
+GearLoop is a rugged, supplier-first rental marketplace for adventure and outdoor gear. The MVP focuses on helping rental shops, outfitters, clubs, and trusted owners list field-ready bikes, boards, snow gear, water gear, camping equipment, and accessories in one searchable layer, while keeping peer-to-peer expansion visible but operationally disciplined.
 
 ## MVP scope
 
-- Landing page with marketplace positioning, category discovery, shop partner messaging, and search entry point.
+- Landing page with rugged marketplace positioning, supplier-first messaging, category discovery, and search entry point.
 - Browse/search page with mock inventory, filters, sorting, owner type badges, availability badges, and realistic listing cards.
 - Listing detail page with owner profile, rental details, deposit and replacement value, safety notes, pickup instructions, cancellation placeholder, price breakdown, and booking request flow.
 - Booking request form with date, renter, email, note validation, rental day calculation, subtotal, platform fee placeholder, deposit, and success state.
-- Partner/list gear page with shop-focused supply messaging and a validated listing intake form.
+- Partner/list gear page with shop, outfitter, club, and trusted-owner supply messaging plus a validated listing intake form.
 - About/business model page explaining the wedge, expansion path, target users, monetization placeholders, trust roadmap, and future roadmap.
 
 ## Tech stack

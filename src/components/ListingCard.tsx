@@ -30,7 +30,7 @@ export function ListingCard({ listing }: { listing: GearListing }) {
         />
         <div className="absolute left-3 top-3 flex flex-wrap gap-2">
           <Badge tone={listing.ownerType === "shop" ? "lake" : "trail"}>
-            {ownerLabel(listing.ownerType)}
+          {listing.ownerType === "shop" ? "Operator" : "Trusted peer"}
           </Badge>
           <Badge tone={availabilityTone(listing.availabilityStatus)}>
             {listing.availabilityStatus}
@@ -57,7 +57,7 @@ export function ListingCard({ listing }: { listing: GearListing }) {
         <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-slate-600">
           <span className="inline-flex items-center gap-1.5">
             <MapPin className="h-4 w-4 text-slate-400" aria-hidden="true" />
-            {listing.location} · {listing.distanceMiles.toFixed(1)} mi
+            {listing.location} - {listing.distanceMiles.toFixed(1)} mi
           </span>
           <span className="inline-flex items-center gap-1.5">
             <Star className="h-4 w-4 fill-amber-400 text-amber-400" aria-hidden="true" />

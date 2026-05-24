@@ -9,7 +9,7 @@ import { PartnerPage } from "./pages/PartnerPage";
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-stone-50 text-slate-900">
+    <div className="min-h-screen bg-stone-50 text-stone-100">
       <Navbar />
       <main>
         <Routes>

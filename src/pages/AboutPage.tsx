@@ -52,8 +52,8 @@ export function AboutPage() {
         <div className="page-shell">
           <SectionHeader
             eyebrow="Business thesis"
-            title="One searchable rental layer for adventure gear."
-            description="Outdoor gear rental demand is fragmented across local rental shops, individual owners, and scattered websites. GearLoop starts by aggregating rental shops, then expands into peer-to-peer supply when trust and operations are ready."
+            title="The supply side is the wedge."
+            description="Outdoor rental demand is fragmented across shops, clubs, owners, and scattered websites. GearLoop becomes the rugged inventory layer by helping serious suppliers list gear, prove reliability, and convert adventure demand into local handoffs."
           />
         </div>
       </section>
@@ -62,17 +62,17 @@ export function AboutPage() {
         <InfoPanel
           icon={Compass}
           title="What GearLoop is"
-          text="A centralized rental marketplace where renters can find bikes, boards, snow gear, water gear, camping equipment, and trip accessories near them."
+          text="A supplier-first adventure rental marketplace where shops, outfitters, clubs, and trusted owners can list field-ready gear in one searchable layer."
         />
         <InfoPanel
           icon={Binoculars}
           title="Why the problem exists"
-          text="Renters often bounce between shop websites, outdated inventory pages, map results, phone calls, and informal local recommendations before knowing what is available."
+          text="The best gear is split between shop fleets, guide garages, club closets, and local owners. Renters only see fragments, and suppliers lose demand to phone tag and stale pages."
         />
         <InfoPanel
           icon={Building2}
           title="Initial wedge"
-          text="Rental shop aggregation creates customer value quickly while relying on shops that already handle maintenance, handoff, fit, deposits, and local operating policies."
+          text="Shop and outfitter aggregation creates credibility quickly while peer listings remain a visible expansion path once verification and protection workflows mature."
         />
       </section>
 
@@ -80,8 +80,8 @@ export function AboutPage() {
         <div className="page-shell grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
           <SectionHeader
             eyebrow="Expansion path"
-            title="Shop-led now, peer-to-peer later."
-            description="Peer-to-peer supply can widen selection and coverage, but only after GearLoop has strong workflows for identity, protection, pickup reliability, deposits, and disputes."
+            title="Operators first. Trusted peers next."
+            description="The long-term opportunity is broader than shops, but adventure gear is expensive and situational. GearLoop earns trust by treating deposits, identity, condition, pickup reliability, and damage claims as product primitives."
           />
           <div className="rounded-lg border border-slate-200 bg-stone-50 p-6">
             <h3 className="text-lg font-bold text-slate-950">Target users</h3>

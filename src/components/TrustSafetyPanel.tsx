@@ -3,8 +3,8 @@ import { ClipboardCheck, ShieldCheck, Store, WalletCards } from "lucide-react";
 const trustItems = [
   {
     icon: Store,
-    title: "Shop-first supply",
-    text: "Most MVP listings come from rental shops with existing maintenance, pickup, and inventory processes.",
+    title: "Operator-first supply",
+    text: "The MVP leans on shops and outfitters with maintenance, pickup, and inventory processes already in place.",
   },
   {
     icon: WalletCards,
@@ -18,8 +18,8 @@ const trustItems = [
   },
   {
     icon: ShieldCheck,
-    title: "Protection roadmap",
-    text: "Identity checks, claims workflows, and insurance partners are planned before broad peer-to-peer scaling.",
+    title: "Trusted peer roadmap",
+    text: "Identity checks, claims workflows, and protection partners come before broad peer-to-peer scaling.",
   },
 ];
 

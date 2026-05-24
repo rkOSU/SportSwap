@@ -116,7 +116,7 @@ export function CreateListingForm() {
           <input
             value={form.title}
             onChange={(event) => updateField("title", event.target.value)}
-            placeholder="Performance gravel bike package"
+            placeholder="Field-ready gravel bike package"
             className="focus-ring mt-2 h-11 w-full rounded-lg border border-slate-300 px-3 text-sm"
           />
         </Field>
@@ -125,7 +125,7 @@ export function CreateListingForm() {
           <input
             value={form.ownerName}
             onChange={(event) => updateField("ownerName", event.target.value)}
-            placeholder="Your rental shop"
+            placeholder="Your shop, club, or owner profile"
             className="focus-ring mt-2 h-11 w-full rounded-lg border border-slate-300 px-3 text-sm"
           />
         </Field>
@@ -253,7 +253,7 @@ export function CreateListingForm() {
             value={form.description}
             onChange={(event) => updateField("description", event.target.value)}
             rows={4}
-            placeholder="Describe what is included, who it is best for, and how renters should think about fit or usage."
+            placeholder="Describe what is included, who it is built for, and how renters should think about fit, terrain, weather, or usage limits."
             className="focus-ring mt-2 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm"
           />
         </Field>
@@ -263,7 +263,7 @@ export function CreateListingForm() {
             value={form.pickupInstructions}
             onChange={(event) => updateField("pickupInstructions", event.target.value)}
             rows={3}
-            placeholder="Explain where renters pick up, what they should bring, and how handoff works."
+            placeholder="Explain where renters pick up, what they should bring, and how inspection or handoff works."
             className="focus-ring mt-2 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm"
           />
         </Field>
@@ -273,7 +273,7 @@ export function CreateListingForm() {
             value={form.safetyNotes}
             onChange={(event) => updateField("safetyNotes", event.target.value)}
             rows={3}
-            placeholder="Mention fit checks, required safety equipment, weather limits, or usage boundaries."
+            placeholder="Mention fit checks, required safety equipment, weather limits, route boundaries, or damage-sensitive use."
             className="focus-ring mt-2 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm"
           />
         </Field>

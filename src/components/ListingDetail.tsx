@@ -56,7 +56,7 @@ export function ListingDetail({ listing, owner }: ListingDetailProps) {
           <section className="rounded-lg border border-slate-200 bg-white p-6 shadow-card">
             <div className="flex flex-wrap items-center gap-2">
               <Badge tone={listing.ownerType === "shop" ? "lake" : "trail"}>
-                {listing.ownerType === "shop" ? "Rental shop" : "Individual owner"}
+                {listing.ownerType === "shop" ? "Operator" : "Trusted peer"}
               </Badge>
               <Badge tone={availabilityTone(listing.availabilityStatus)}>
                 {listing.availabilityStatus}
@@ -73,7 +73,7 @@ export function ListingDetail({ listing, owner }: ListingDetailProps) {
             <div className="mt-5 flex flex-wrap gap-x-5 gap-y-3 text-sm text-slate-600">
               <span className="inline-flex items-center gap-2">
                 <MapPin className="h-4 w-4 text-slate-400" aria-hidden="true" />
-                {listing.location} · {listing.distanceMiles.toFixed(1)} miles away
+                {listing.location} - {listing.distanceMiles.toFixed(1)} miles away
               </span>
               <span className="inline-flex items-center gap-2">
                 <CalendarDays className="h-4 w-4 text-slate-400" aria-hidden="true" />

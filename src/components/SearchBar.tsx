@@ -34,7 +34,7 @@ export function SearchBar({
   return (
     <form
       onSubmit={handleSubmit}
-      className={`grid gap-3 rounded-lg bg-white p-3 shadow-soft ring-1 ring-slate-200 ${
+      className={`grid gap-3 rounded-lg bg-basalt-800/95 p-3 shadow-soft ring-1 ring-forest-300/20 ${
         compact ? "md:grid-cols-[1fr_1fr_auto]" : "md:grid-cols-[1.2fr_1fr_auto]"
       }`}
     >
@@ -46,7 +46,7 @@ export function SearchBar({
           value={category}
           onChange={(event) => setCategory(event.target.value)}
           placeholder="Bikes, skis, kayaks..."
-          className="focus-ring h-12 w-full rounded-lg border border-slate-300 bg-white pl-10 pr-4 text-sm text-slate-950 placeholder:text-slate-400"
+          className="focus-ring h-12 w-full rounded-lg border border-slate-300 bg-basalt-900 pl-10 pr-4 text-sm text-slate-950 placeholder:text-slate-400"
         />
         <datalist id="gear-options">
           {[...categoryOptions, ...subcategoryOptions].map((option) => (
@@ -62,7 +62,7 @@ export function SearchBar({
           value={location}
           onChange={(event) => setLocation(event.target.value)}
           placeholder="City or destination"
-          className="focus-ring h-12 w-full rounded-lg border border-slate-300 bg-white pl-10 pr-4 text-sm text-slate-950 placeholder:text-slate-400"
+          className="focus-ring h-12 w-full rounded-lg border border-slate-300 bg-basalt-900 pl-10 pr-4 text-sm text-slate-950 placeholder:text-slate-400"
         />
       </label>
 

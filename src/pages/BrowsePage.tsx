@@ -51,11 +51,11 @@ export function BrowsePage() {
           <div className="mt-3 grid gap-5 lg:grid-cols-[1fr_520px] lg:items-end">
             <div>
               <h1 className="text-3xl font-black text-slate-950 sm:text-4xl">
-                Compare local adventure gear rentals.
+                Scout field-ready rental gear.
               </h1>
               <p className="mt-3 max-w-2xl text-base leading-7 text-slate-600">
-                Filter by category, owner type, price, distance, and availability across realistic
-                shop-led MVP inventory.
+                Compare serious shop, outfitter, club, and trusted-owner supply by category,
+                distance, price, condition, and availability.
               </p>
             </div>
             <SearchBar
@@ -85,11 +85,11 @@ export function BrowsePage() {
             <div className="mb-5 flex flex-col gap-4 rounded-lg border border-slate-200 bg-white p-4 shadow-card md:flex-row md:items-center md:justify-between">
               <div>
                 <p className="text-sm font-semibold text-slate-950">
-                  {visibleListings.length} listings found · {shopCount} rental shop listings
+                  {visibleListings.length} listings found - {shopCount} operator listings
                 </p>
                 <p className="mt-1 text-sm text-slate-600">
                   {filters.category || "All categories"}
-                  {filters.location ? ` near ${filters.location}` : " across featured markets"}
+                  {filters.location ? ` near ${filters.location}` : " across rugged launch markets"}
                 </p>
               </div>
               <SortSelect value={sortOption} onChange={setSortOption} />

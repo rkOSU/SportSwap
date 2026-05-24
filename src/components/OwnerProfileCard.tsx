@@ -25,7 +25,7 @@ export function OwnerProfileCard({ owner, listing }: OwnerProfileCardProps) {
           <div className="flex flex-wrap items-center gap-2">
             <h3 className="text-lg font-bold text-slate-950">{listing.ownerName}</h3>
             <Badge tone={isShop ? "lake" : "trail"}>
-              {isShop ? "Rental shop" : "Individual owner"}
+              {isShop ? "Operator" : "Trusted peer"}
             </Badge>
           </div>
           <div className="mt-3 grid gap-2 text-sm text-slate-600">
@@ -44,7 +44,7 @@ export function OwnerProfileCard({ owner, listing }: OwnerProfileCardProps) {
             {owner?.verified ? (
               <span className="inline-flex items-center gap-2 font-semibold text-forest-700">
                 <CheckCircle2 className="h-4 w-4" aria-hidden="true" />
-                Verified shop profile
+                Verified operator profile
               </span>
             ) : null}
           </div>

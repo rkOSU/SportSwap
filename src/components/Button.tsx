@@ -4,11 +4,11 @@ type ButtonVariant = "primary" | "secondary" | "outline" | "ghost";
 
 const variantClasses: Record<ButtonVariant, string> = {
   primary:
-    "bg-forest-600 text-white shadow-sm hover:bg-forest-700 focus-visible:outline-forest-600",
-  secondary: "bg-lake-600 text-white shadow-sm hover:bg-lake-700 focus-visible:outline-lake-600",
+    "bg-forest-300 text-zinc-950 shadow-sm hover:bg-forest-200 focus-visible:outline-forest-300",
+  secondary: "bg-trail-500 text-white shadow-sm hover:bg-trail-700 focus-visible:outline-trail-500",
   outline:
-    "border border-slate-300 bg-white text-slate-900 hover:border-forest-600 hover:text-forest-700 focus-visible:outline-forest-600",
-  ghost: "text-slate-700 hover:bg-slate-100 focus-visible:outline-slate-500",
+    "border border-slate-300 bg-zinc-950/50 text-slate-900 hover:border-forest-300 hover:text-forest-100 focus-visible:outline-forest-300",
+  ghost: "text-slate-700 hover:bg-white/10 focus-visible:outline-slate-500",
 };
 
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
