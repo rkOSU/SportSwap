@@ -49,6 +49,7 @@ npm run typecheck
 npm run format:check
 npm run build
 npm run check
+npm run shops:collect:dry
 npm run preview
 ```
 
@@ -169,3 +170,14 @@ When running `netlify init`, use:
 - Peer-to-peer expansion
 - Reviews
 - Messaging between renters and shops/owners
+
+## Rental shop research
+
+The repo includes a no-key OpenStreetMap collector for rental-shop leads. It starts with the SF Bay Area and can run as a weekly Supabase upsert job.
+
+```bash
+npm run shops:collect:dry
+npm run shops:collect -- --metro sf-bay-area --area-mode all
+```
+
+See [Rental Shop Collection](docs/RENTAL_SHOP_COLLECTION.md) for setup, Supabase credentials, and operational notes.

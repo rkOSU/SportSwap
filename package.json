@@ -13,6 +13,8 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "check": "npm run lint && npm run build",
+    "shops:collect": "node scripts/collect-rental-shops.mjs",
+    "shops:collect:dry": "node scripts/collect-rental-shops.mjs --dry-run",
     "supabase:login": "supabase login",
     "supabase:projects": "supabase projects list",
     "supabase:link": "supabase link",
